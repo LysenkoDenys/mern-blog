@@ -17,7 +17,7 @@ const userSchema = new mongoose.Schema(
       required: true,
     },
   },
-  { timestamp: true } // to fix time when user CRUD posts
+  { timestamps: true } // to fix time when user CRUD posts
 );
 
 const User = mongoose.model('User', userSchema);

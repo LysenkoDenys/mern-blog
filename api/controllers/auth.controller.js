@@ -63,3 +63,52 @@ export const signin = async (req, res, next) => {
     next(error);
   }
 };
+
+export const google = async (req, res, next) => {
+  const { email, name, googlePhotoUrl } = req.body;
+  try {
+    const user = await User.findOne({ email });
+    if (user) {
+      const token = jwt.sign({ id: user._id }, process.env.JWT_SECRET);
+      const { password, ...rest } = user._doc;
+      res
+        .status(200)
+        .cookie('access_token', token, {
+          httpOnly: true,
+        })
+        .json(rest);
+    } else {
+      // if email does not exist we have got created a new user:
+      //we create a random password to the user and later we allowed him to change the password:
+      const generatedPassword =
+        Math.random().toString(36).slice(-8) +
+        Math.random().toString(36).slice(-8);
+      // 36 - numbers 0-9 and letters a-z
+      // -8  we take last 8 letters and numbers (0.1544sdfsd --> 1544sdfsd)
+      const hashedPassword = bcryptjs.hashSync(generatedPassword, 10);
+      //create a new user:
+      const newUser = new User({
+        //Sahand Ghavidel --> sahandghavidel1625
+        username:
+          name.toLowerCase().split(' ').join('') +
+          Math.random().toString(9).slice(-4),
+        // 9 - numbers 0-9
+        // -4  we take last 4 numbers
+        email,
+        password: hashedPassword,
+        profilePicture: googlePhotoUrl,
+      });
+      await newUser.save();
+      const token = jwt.sign({ id: newUser._id }, process.env.JWT_SECRET);
+      const { password, ...rest } = newUser._doc;
+      res
+        .status(200)
+        .cookie('access_token', token, {
+          httpOnly: true,
+        })
+        .json(rest);
+    }
+  } catch (error) {
+    next(error);
+  }
+};

@@ -27,6 +27,7 @@ const DashSidebar = () => {
               // my approach to avoid warning about nested link:
               onClick={() => navigate('/dashboard?tab=profile')}
               className="cursor-pointer"
+              // or we could write: as='div'
             >
               Profile
             </Sidebar.Item>

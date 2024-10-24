@@ -4,16 +4,20 @@
 
 <p>This app allows you:</p>
 <ul>
-<li>⭐</li>
+<li>⭐publish posts</li>
+<li>⭐comment posts</li>
+<li>⭐authorization</li>
 </ul>
 
 <p>Sample:</p>
 
-![1586](https://github.com/LysenkoDenys/kindergarten/assets/105970854/1bac93c3-953c-4524-9e79-18272733376a)
+![img](https://github.com/user-attachments/assets/16ba9372-3043-4dbf-9050-3d816305a155)
 
 <p>This React JS project uses next plug-ns, API, libraries:</p>
 <ul>
-<li>⭐https://expressjs.com/</li>
+<li>⭐https://expressjs.com</li>
+<li>⭐https://www.npmjs.com/package/react-quill</li>
+<li>⭐https://www.npmjs.com/package/react-circular-progressbar</li>
 </ul>
 
 <p>Build with TailwindCSS and totally adaptive to most popular devices.</p>

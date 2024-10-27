@@ -18,6 +18,7 @@
 <li>⭐https://expressjs.com</li>
 <li>⭐https://www.npmjs.com/package/react-quill</li>
 <li>⭐https://www.npmjs.com/package/react-circular-progressbar</li>
+<li>⭐https://www.npmjs.com/package/tailwind-scrollbar</li>
 </ul>
 
 <p>Build with TailwindCSS and totally adaptive to most popular devices.</p>

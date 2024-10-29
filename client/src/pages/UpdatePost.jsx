@@ -19,74 +19,82 @@ const UpdatePost = () => {
   const [imageUploadProgress, setImageUploadProgress] = useState(null);
   const [imageUploadError, setImageUploadError] = useState(null);
   const [formData, setFormData] = useState({
-    title: '', // Ensure title has a default value
-    category: '', // Ensure category has a default value
-    content: '', // Ensure content has a default value
-    image: '', // Ensure image has a default value
+    title: '',
+    category: '',
+    content: '',
+    image: '',
   });
+  const [content, setContent] = useState(''); // Store the content separately for debounced updates
   const [publishError, setPublishError] = useState(null);
   const navigate = useNavigate();
   const { postId } = useParams();
   const { currentUser } = useSelector((state) => state.user);
 
   useEffect(() => {
-    try {
-      const fetchPost = async () => {
-        const res = await fetch(`/api/post/getposts?postId=${postId}`);
+    const fetchPost = async () => {
+      try {
+        const res = await fetch(`/api/post/getposts?postId=${postId}`); // Fetch post based on postId
         const data = await res.json();
         if (!res.ok) {
-          console.log(data.message);
-          setPublishError(data.message);
+          setPublishError(data.message); // Handle publish error if fetch is unsuccessful
           return;
         }
-        if (res.ok) {
-          setPublishError(null);
-          setFormData(data.posts[0]);
-        }
-      };
-      fetchPost();
-    } catch (error) {
-      console.log(error.message);
-    }
+        setFormData(data.posts[0]); // Set the form data if fetch is successful
+        setContent(data.posts[0].content); // Set content state separately for debounced updates
+      } catch (error) {
+        console.log(error.message);
+        setPublishError(error.message); // Handle fetch errors by setting the publishError
+      }
+    };
+    fetchPost(); // Call fetchPost on mount to load the initial data
   }, [postId]);
 
+  useEffect(() => {
+    const debounce = setTimeout(() => {
+      setFormData((prevFormData) => ({ ...prevFormData, content })); // Update formData.content with debounced content
+    }, 500);
+    return () => clearTimeout(debounce); // Clear timeout if content changes again within 500ms
+  }, [content]); // Only re-run when content changes
+
   const handlerUploadImage = async () => {
-    try {
-      if (!file) {
-        setImageUploadError('Please select an image');
-        return;
-      }
-
-      setImageUploadError(null);
-      const storage = getStorage(app);
-      const fileName = new Date().getTime() + '-' + file.name;
-      const storageRef = ref(storage, fileName);
-      const uploadTask = uploadBytesResumable(storageRef, file);
-
-      uploadTask.on(
-        'state changed',
-        (snapshot) => {
-          const progress =
-            (snapshot.bytesTransferred / snapshot.totalBytes) * 100;
-          setImageUploadProgress(progress.toFixed(0));
-        },
-        (error) => {
-          setImageUploadError('Image upload failed');
-          setImageUploadProgress(null);
-        },
-        () => {
-          getDownloadURL(uploadTask.snapshot.ref).then((downloadURL) => {
-            setImageUploadProgress(null);
-            setImageUploadError(null);
-            setFormData({ ...formData, image: downloadURL });
-          });
-        }
-      );
-    } catch (error) {
-      setImageUploadError('Image upload failed');
-      setImageUploadProgress(null);
-      console.log(error);
+    if (!file) {
+      // Check if a file is selected
+      setImageUploadError('Please select an image'); // Set error if no file is selected
+      return;
     }
+    setImageUploadError(null); // Clear any previous image upload errors
+
+    const storage = getStorage(app); // Get Firebase storage instance
+    const fileName = `${new Date().getTime()}-${file.name}`; // Create a unique filename
+    const storageRef = ref(storage, fileName); // Create a reference to the storage path
+    const uploadTask = uploadBytesResumable(storageRef, file); // Start the upload task
+
+    uploadTask.on(
+      'state_changed',
+      (snapshot) => {
+        const progress = (
+          (snapshot.bytesTransferred / snapshot.totalBytes) *
+          100
+        ).toFixed(0); // Calculate upload progress
+        setImageUploadProgress(progress); // Set upload progress in state
+      },
+      (error) => {
+        console.log(error); // Log any errors that occur during upload
+        setImageUploadError('Image upload failed'); // Set error message for failed upload
+        setImageUploadProgress(null); // Reset progress indicator if upload fails
+      },
+      () => {
+        getDownloadURL(uploadTask.snapshot.ref).then((downloadURL) => {
+          // Get the download URL on successful upload
+          setFormData((prevFormData) => ({
+            ...prevFormData,
+            image: downloadURL,
+          })); // Set the image URL in formData
+          setImageUploadProgress(null); // Clear upload progress once upload completes
+          setImageUploadError(null); // Clear any image upload errors after success
+        });
+      }
+    );
   };
 
   const handleSubmit = async (e) => {
@@ -96,23 +104,19 @@ const UpdatePost = () => {
         `/api/post/updatepost/${formData._id}/${currentUser._id}`,
         {
           method: 'PUT',
-          headers: {
-            'Content-Type': 'application/json',
-          },
-          body: JSON.stringify(formData),
+          headers: { 'Content-Type': 'application/json' }, // Set headers for JSON content type
+          body: JSON.stringify(formData), // Send formData in the body of the request
         }
       );
       const data = await res.json();
       if (!res.ok) {
-        setPublishError(data.message);
+        setPublishError(data.message); // Handle publish error if response is unsuccessful
         return;
       }
-      if (res.ok) {
-        setPublishError(null);
-        navigate(`/post/${data.slug}`);
-      }
+      navigate(`/post/${data.slug}`); // Redirect to updated post page if response is successful
     } catch (error) {
-      setPublishError('Something went wrong');
+      console.log(error); // Log any errors that occur during form submission
+      setPublishError('Something went wrong'); // Set a generic error message for failed submission
     }
   };
 
@@ -129,14 +133,14 @@ const UpdatePost = () => {
             className="flex-1"
             onChange={(e) =>
               setFormData({ ...formData, title: e.target.value })
-            }
-            value={formData.title}
+            } // Set title in formData on change
+            value={formData.title} // Bind formData title to the input
           />
           <Select
             onChange={(e) =>
               setFormData({ ...formData, category: e.target.value })
-            }
-            value={formData.category}
+            } // Set category in formData on change
+            value={formData.category} // Bind formData category to the select
           >
             <option value="uncategorized">Select a category</option>
             <option value="javascript">JavaScript</option>
@@ -149,7 +153,7 @@ const UpdatePost = () => {
           <FileInput
             type="file"
             accept="image/*"
-            onChange={(e) => setFile(e.target.files[0])}
+            onChange={(e) => setFile(e.target.files[0])} // Set file state on file input change
           />
           <Button
             type="button"
@@ -157,13 +161,13 @@ const UpdatePost = () => {
             size="sm"
             outline
             onClick={handlerUploadImage}
-            disabled={imageUploadProgress}
+            disabled={!!imageUploadProgress} // Disable button while image is uploading
           >
             {imageUploadProgress ? (
               <div className="w-16 h-16">
                 <CircularProgressbar
                   value={imageUploadProgress}
-                  text={`${imageUploadProgress || 0}%`}
+                  text={`${imageUploadProgress}%`}
                 />
               </div>
             ) : (
@@ -181,13 +185,11 @@ const UpdatePost = () => {
         )}
         <ReactQuill
           theme="snow"
-          value={formData.content}
+          value={content} // Bind separate content state to ReactQuill
           placeholder="Write something smart, impress me..."
           className="h-72 mb-12"
           required
-          onChange={(value) => {
-            setFormData({ ...formData, content: value });
-          }}
+          onChange={setContent} // Update content state on change for debounced update
         />
         <Button type="submit" gradientDuoTone="purpleToPink">
           Update post

@@ -12,6 +12,7 @@ import OnlyAdminPrivateRoute from './components/OnlyAdminPrivateRoute';
 import CreatePost from './pages/CreatePost';
 import UpdatePost from './pages/UpdatePost';
 import NotFound from './pages/NotFound';
+import PostPage from './pages/PostPage';
 
 const App = () => {
   return (
@@ -30,6 +31,7 @@ const App = () => {
           <Route path="/update-post/:postId" element={<UpdatePost />} />
         </Route>
         <Route path="/projects" element={<Projects />} />
+        <Route path="/post/:postSlug" element={<PostPage />} />
         {/* Catch-all route for 404 */}
         <Route path="*" element={<NotFound />} />
       </Routes>

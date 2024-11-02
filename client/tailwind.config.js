@@ -1,6 +1,7 @@
 import flowbite from 'flowbite-react/tailwind';
 import flowbitePlugin from 'flowbite/plugin';
 import scrollbarPlugin from 'tailwind-scrollbar';
+import lineClamp from '@tailwindcss/line-clamp';
 
 /** @type {import('tailwindcss').Config} */
 export default {
@@ -16,6 +17,7 @@ export default {
   plugins: [
     flowbitePlugin, // Flowbite plugin
     flowbite.plugin(), // Flowbite React plugin
-    scrollbarPlugin, // Tailwind scrollbar plugin
+    scrollbarPlugin, // Tailwind scrollbar plugin4
+    lineClamp, // Tailwind CSS Line Clamp plugin
   ],
 };

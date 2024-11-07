@@ -23,3 +23,8 @@
 </ul>
 
 <p>Build with TailwindCSS and totally adaptive to most popular devices.</p>
+
+License
+
+<hr>
+The app is free to use for personal and commercial purposes, but attribution is required. Please credit the app and its creators in any blog posts or other content generated using the app.

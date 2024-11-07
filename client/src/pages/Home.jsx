@@ -46,7 +46,10 @@ const Home = () => {
                 <PostCard key={post._id} post={post} />
               ))}
             </div>
-            <Link className="text-lg text-teal-500 hover:underline text-center">
+            <Link
+              to={'/search'}
+              className="text-lg text-teal-500 hover:underline text-center"
+            >
               View all posts
             </Link>
           </div>

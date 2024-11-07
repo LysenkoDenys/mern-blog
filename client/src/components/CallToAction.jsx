@@ -6,22 +6,22 @@ const CallToAction = () => {
       <div className="flex-1 justify-center flex flex-col">
         <h2 className="text-2xl">Want to know more?</h2>
         <p className="text-gray-500 my-2">Follow me...</p>
-        <Button
-          gradientDuoTone="purpleToPink"
-          className="rounded-tl-xl rounded-bl-none"
+        <a
+          href="https://www.facebook.com/profile.php?id=100001281440746"
+          target="_blank"
+          rel="noopener noreferrer"
         >
-          <a
-            href="https://www.facebook.com/profile.php?id=100001281440746"
-            target="_blank"
-            rel="noopener noreferrer"
+          <Button
+            gradientDuoTone="purpleToPink"
+            className="rounded-tl-xl rounded-bl-none"
           >
             on facebook
-          </a>
-        </Button>
+          </Button>
+        </a>
       </div>
       <div className="px-7 py-0 flex-1">
         <a
-          href="https://www.facebook.com/profile.php?id=100001281440746"
+          href="https://www.linkedin.com/in/lysenko-denys/"
           target="_blank"
           rel="noopener noreferrer"
         >

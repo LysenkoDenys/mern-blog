@@ -6,7 +6,7 @@ import {
   HiDocumentText,
   HiOutlineUserGroup,
 } from 'react-icons/hi';
-import { Button, Table, TableHead } from 'flowbite-react';
+import { Button, Table } from 'flowbite-react';
 import { Link } from 'react-router-dom';
 
 const DashBoardComp = () => {

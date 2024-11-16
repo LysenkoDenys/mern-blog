@@ -1,6 +1,6 @@
 # BLOG (MERN)
 
-### The application deployed here:
+### The application is deployed here:
 
 https://lysenko-blog.onrender.com
 

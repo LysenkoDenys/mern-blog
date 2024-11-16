@@ -1,6 +1,10 @@
 # BLOG (MERN)
 
-### The app allows to lead my blog.
+### The application deployed here:
+
+https://lysenko-blog.onrender.com
+
+### The app allows to lead your blog.
 
 <p>This app allows you:</p>
 <ul>

@@ -1,10 +1,11 @@
 import myImage from '../assets/about.avif';
+import CallToAction from '../components/CallToAction';
 
 const About = () => {
   return (
     <div className="min-h-screen flex items-center justify-center">
       <div className="max-w-2xl mx-auto p-3 text-center">
-        <div className="">
+        <div className="mb-8">
           <img src={myImage} alt="wallpaper" className="rounded-md" />
           <h1 className="text-3xl font font-semibold text-center my-7">
             About my blog
@@ -31,6 +32,7 @@ const About = () => {
             </p>
           </div>
         </div>
+        <CallToAction />
       </div>
     </div>
   );

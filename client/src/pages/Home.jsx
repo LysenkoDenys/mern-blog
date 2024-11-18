@@ -22,10 +22,10 @@ const Home = () => {
           Welcome to my Blog, friend.
         </h1>
 
-        <p className="text-gray-500 text-xs sm:text-sm">
+        <p className="text-gray-500 text-2xl sm:text-4xl">
           Here you'll find a variety of articles on topics such as web
-          development, software engineering, programming languages and just
-          memories.
+          development, software engineering, programming languages, memories and
+          just thoughts about our life.
         </p>
         <Link
           to="/search"

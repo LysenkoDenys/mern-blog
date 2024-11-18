@@ -36,6 +36,10 @@ https://lysenko-blog.onrender.com
 
 <p>Build with TailwindCSS and totally adaptive to most popular devices.</p>
 
+<p>To run the project on your PC you should write in the terminal following:</p>
+<li>in first bash: npm run dev</li>
+<li>in second bash: 1) cd client 2) npm run dev</li>
+
 License
 
 <hr>

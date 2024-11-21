@@ -14,7 +14,7 @@ const CommentSection = ({ postId }) => {
   const [showModal, setShowModal] = useState(false);
   const [commentToDelete, setCommentToDelete] = useState(null);
   const navigate = useNavigate();
-  const commentLengthMax = 500;
+  const commentLengthMax = 3000;
 
   const handleSubmit = async (e) => {
     e.preventDefault();

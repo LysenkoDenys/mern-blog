@@ -4,6 +4,7 @@
 
 body {
   height: 100vh;
+  background: url('./assets/texture.avif');
 }
 
 .ql-editor {

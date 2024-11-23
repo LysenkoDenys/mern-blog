@@ -4,7 +4,7 @@ import { BsFacebook, BsGithub, BsLinkedin, BsDribbble } from 'react-icons/bs';
 
 const FooterCom = () => {
   return (
-    <Footer container className="border border-t-8 border-teal-500">
+    <Footer container className="border border-t-8 border-teal-500 py-3">
       <div className="w-full max-w-7xl mx-auto">
         <div className="grid w-full justify-between sm:flex md:grid-cols-1">
           <div className="mt-5">
@@ -77,24 +77,28 @@ const FooterCom = () => {
             <Footer.Icon
               href="https://www.facebook.com/profile.php?id=100001281440746"
               icon={BsFacebook}
+              aria-label="Author`s facebook page"
               target="_blank"
               rel="noopener noreferrer"
             />
             <Footer.Icon
               href="https://github.com/LysenkoDenys"
               icon={BsGithub}
+              aria-label="Author`s gitHub page"
               target="_blank"
               rel="noopener noreferrer"
             />
             <Footer.Icon
               href="https://www.linkedin.com/in/lysenko-denys"
               icon={BsLinkedin}
+              aria-label="Author`s Linkedin page"
               target="_blank"
               rel="noopener noreferrer"
             />
             <Footer.Icon
               href="https://dribbble.com/Denys_Lysenko"
               icon={BsDribbble}
+              aria-label="Author`s dribble page"
               target="_blank"
               rel="noopener noreferrer"
             />

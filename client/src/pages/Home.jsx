@@ -29,12 +29,12 @@ const Home = () => {
         </p>
         <Link
           to="/search"
-          className="text-xs sm:text-sm text-teal-500 font-bold hover:underline"
+          className="text-xs sm:text-sm text-teal-600 font-bold hover:underline"
         >
           View all posts
         </Link>
       </div>
-      <div className="p-3 bg-green-300 dark:bg-slate-700">
+      <div className="p-3 bg-green-200 dark:bg-slate-700">
         <CallToAction />
       </div>
       <div className="max-w-7xl mx-auto p-3 flex flex-col gap-8 py-7">

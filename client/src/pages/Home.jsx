@@ -1,14 +1,15 @@
 import { Link } from 'react-router-dom';
-import CallToAction from '../components/CallToAction';
-import { useEffect, useState } from 'react';
-import PostCard from '../components/PostCard';
+import { useEffect, useState, lazy, Suspense } from 'react';
+
+const CallToAction = lazy(() => import('../components/CallToAction'));
+const PostCard = lazy(() => import('../components/PostCard'));
 
 const Home = () => {
   const [posts, setPosts] = useState([]);
 
   useEffect(() => {
     const fetchPosts = async () => {
-      const res = await fetch('/api/post/getPosts');
+      const res = await fetch('/api/post/getPosts?limit=3'); // limits of posts to improve performance
       const data = await res.json();
       setPosts(data.posts);
     };
@@ -35,16 +36,20 @@ const Home = () => {
         </Link>
       </div>
       <div className="p-3 bg-green-200 dark:bg-slate-700">
-        <CallToAction />
+        <Suspense fallback={<div>Loading...</div>}>
+          <CallToAction />
+        </Suspense>
       </div>
       <div className="max-w-7xl mx-auto p-3 flex flex-col gap-8 py-7">
         {posts && posts.length > 0 && (
           <div className="flex flex-col gap-6">
             <h2 className="text-2xl font-semibold text-center">Recent Posts</h2>
             <div className="flex flex-wrap gap-4">
-              {posts.map((post) => (
-                <PostCard key={post._id} post={post} />
-              ))}
+              <Suspense fallback={<div>Loading posts...</div>}>
+                {posts.map((post) => (
+                  <PostCard key={post._id} post={post} />
+                ))}
+              </Suspense>
             </div>
             <Link
               to={'/search'}

@@ -36,11 +36,11 @@ https://lysenko-blog.onrender.com
 
 <p>Build with TailwindCSS and totally adaptive to most popular devices.</p>
 
-<p>To run the project on your PC you should write in the terminal following:</p>
+<p>To run the project on your PC you must have installed Node.js also you should write in the VSC terminal following:</p>
+<li>npm install</li>
 <li>in first bash: npm run dev</li>
 <li>in second bash: 1) cd client 2) npm run dev</li>
 
-License
-
+<p>License</p>
 <hr>
-The app is free to use for personal and commercial purposes, but attribution is required. Please credit the app and its creators in any blog posts or other content generated using the app.
+<p>The app is free to use for personal and commercial purposes, but attribution is required. Please credit the app and its creators in any blog posts or other content generated using the app.</p>

@@ -4,7 +4,16 @@
 
 https://lysenko-blog.onrender.com
 
+### video guide how to use it:
+
+https://lysenko-blog.onrender.com
+
 ### The app allows to lead your blog.
+
+<p>The application description:</p>
+<p>The blog has admin dashboard to manage users, posts and comments (complete with CRUD operations using MongoDB.</p>
+<p>The BLOG designed to be completely responsive across various devices, additionally a dark mode is added.</p>
+<p>Also, it has additional search functionality: search by title, limit result, sort through a sidebar. </p>
 
 <p>This app allows you:</p>
 <ul>

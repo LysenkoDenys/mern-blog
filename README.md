@@ -40,7 +40,7 @@ https://lysenko-blog.onrender.com
 <li>npm install</li>
 <li>in first bash: npm run dev</li>
 <li>in second bash: 1) cd client 2) npm run dev</li>
-
+<br>
 <p>License</p>
 <hr>
 <p>The app is free to use for personal and commercial purposes, but attribution is required. Please credit the app and its creators in any blog posts or other content generated using the app.</p>

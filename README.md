@@ -4,9 +4,9 @@
 
 https://lysenko-blog.onrender.com
 
-### video guide how to use it:
+### video guide how to use it (coming soon...):
 
-https://lysenko-blog.onrender.com
+https://#
 
 ### The app allows to lead your blog.
 
@@ -50,6 +50,8 @@ https://lysenko-blog.onrender.com
 <li>in first bash: npm run dev</li>
 <li>in second bash: 1) cd client 2) npm run dev</li>
 <br>
-<p>License</p>
+
+### License
+
 <hr>
 <p>The app is free to use for personal and commercial purposes, but attribution is required. Please credit the app and its creators in any blog posts or other content generated using the app.</p>

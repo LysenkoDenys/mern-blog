@@ -1,5 +1,6 @@
 import { Link } from 'react-router-dom';
 import { useEffect, useState, lazy, Suspense } from 'react';
+import { Spinner } from 'flowbite-react';
 
 const CallToAction = lazy(() => import('../components/CallToAction'));
 const PostCard = lazy(() => import('../components/PostCard'));
@@ -36,7 +37,13 @@ const Home = () => {
         </Link>
       </div>
       <div className="p-3 bg-green-200 dark:bg-slate-700">
-        <Suspense fallback={<div>Loading...</div>}>
+        <Suspense
+          fallback={
+            <div className="flex justify-center items-center min-h-[100px]">
+              <Spinner size="lg" />
+            </div>
+          }
+        >
           <CallToAction />
         </Suspense>
       </div>
@@ -45,7 +52,13 @@ const Home = () => {
           <div className="flex flex-col gap-6">
             <h2 className="text-2xl font-semibold text-center">Recent Posts</h2>
             <div className="flex flex-wrap gap-4">
-              <Suspense fallback={<div>Loading posts...</div>}>
+              <Suspense
+                fallback={
+                  <div className="flex justify-center items-center min-h-[100px]">
+                    <Spinner size="lg" />
+                  </div>
+                }
+              >
                 {posts.map((post) => (
                   <PostCard key={post._id} post={post} />
                 ))}

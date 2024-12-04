@@ -23,8 +23,14 @@ const Home = () => {
         <h1 className="text-3xl font-bold lg:text-6xl">
           Welcome to my Blog, friend.
         </h1>
-
-        <p className="text-gray-500 text-2xl sm:text-4xl">
+        {/* inline styles to improve LCP */}
+        <p
+          style={{
+            color: '#6b7280',
+            fontSize: '2rem',
+            lineHeight: '2.5rem',
+          }}
+        >
           Here you'll find a variety of articles on topics such as web
           development, software engineering, programming languages, memories and
           just thoughts about our life.

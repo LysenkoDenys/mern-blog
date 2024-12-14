@@ -2,6 +2,7 @@ import { Alert, Button, Label, Spinner, TextInput } from 'flowbite-react';
 import { useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import OAuth from '../components/OAuth';
+import getErrUsername from '../helpers/getErrUsername';
 
 const SignUp = () => {
   const [formData, setFormData] = useState({});
@@ -28,15 +29,24 @@ const SignUp = () => {
         body: JSON.stringify(formData),
       });
       const data = await res.json();
-      if (data.success === false) {
-        return setErrorMessage(data.message);
+
+      // Stop loading and handle specific server errors
+      if (!res.ok) {
+        if (data.message && data.message.includes('E11000')) {
+          setErrorMessage(getErrUsername(data.message)); // Extract meaningful error
+        } else {
+          setErrorMessage(
+            data.message || 'An error occurred. Please try again.'
+          );
+        }
+        setLoading(false); // Stop loading when there's an error
+        return;
       }
-      setLoading(false);
-      if (res.ok) {
-        navigate('/sign-in');
-      }
+
+      setLoading(false); // Ensure loading stops on success
+      navigate('/sign-in'); // Navigate to sign-in page
     } catch (error) {
-      setErrorMessage(error.message);
+      setErrorMessage(error.message || 'An unexpected error occurred.');
       setLoading(false);
     }
   };
@@ -113,7 +123,9 @@ const SignUp = () => {
           </div>
           {errorMessage && (
             <Alert className="mt-5" color="failure">
-              {errorMessage}
+              {errorMessage.match(/^E11000 duplicate key error collection:/gi)
+                ? getErrUsername(errorMessage)
+                : errorMessage}
             </Alert>
           )}
         </div>
@@ -123,3 +135,7 @@ const SignUp = () => {
 };
 
 export default SignUp;
+
+// todo:
+//* 1. stop loading when E11000
+// 2. make username field red

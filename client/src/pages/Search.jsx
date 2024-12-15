@@ -96,7 +96,6 @@ const Search = () => {
     }
   };
 
-  console.log(sidebarData); //
   return (
     <div className="flex flex-col md:flex-row">
       <div className="p-7 border-b md:border-r md:min-h-screen border-gray-500">
@@ -136,6 +135,7 @@ const Search = () => {
               <option value="nextjs">Next.js</option>
               <option value="javascript">JavaScript</option>
               <option value="nodejs">Node.js</option>
+              <option value="life">Life</option>
             </Select>
           </div>
           <Button type="submit" outline gradientDuoTone="purpleToPink">

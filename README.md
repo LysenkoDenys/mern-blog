@@ -26,11 +26,11 @@ https://#
 <li>⭐search posts by title, limit results, sort</li>
 </ul>
 
-<p>Sample-01:</p>
+<p>Sample-01 Create a post:</p>
 
 ![img](https://github.com/user-attachments/assets/16ba9372-3043-4dbf-9050-3d816305a155)
 
-<p>Sample-02:</p>
+<p>Sample-02 Admin dashboard:</p>
 
 ![dashboard](https://github.com/user-attachments/assets/db0d558e-1977-4fe1-a5e0-49ca7fd6dde2)
 

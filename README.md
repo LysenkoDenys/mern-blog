@@ -26,9 +26,13 @@ https://#
 <li>⭐search posts by title, limit results, sort</li>
 </ul>
 
-<p>Sample:</p>
+<p>Sample-01:</p>
 
 ![img](https://github.com/user-attachments/assets/16ba9372-3043-4dbf-9050-3d816305a155)
+
+<p>Sample-02:</p>
+
+![dashboard](https://github.com/user-attachments/assets/db0d558e-1977-4fe1-a5e0-49ca7fd6dde2)
 
 <p>This MERN project uses next plug-ns, API, libraries:</p>
 <ul>
@@ -43,7 +47,7 @@ https://#
 <li>⭐https://www.npmjs.com/package/moment</li>
 </ul>
 
-<p>Build with TailwindCSS and totally adaptive to most popular devices.</p>
+<p>Built with Tailwind CSS (responsive designed), and suitable for most popular devices.</p>
 
 <p>To run the project on your PC you must have installed Node.js also you should write in the VSC terminal following:</p>
 <li>npm install</li>

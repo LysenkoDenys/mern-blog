@@ -15,32 +15,35 @@ import NotFound from './pages/NotFound';
 import PostPage from './pages/PostPage';
 import ScrollToTop from './components/ScrollToTop';
 import Search from './pages/Search';
+import WithLoading from './pages/WithLoading';
 
 const App = () => {
   return (
-    <BrowserRouter>
-      <ScrollToTop />
-      <Header />
-      <Routes>
-        <Route path="/" element={<Home />} />
-        <Route path="/about" element={<About />} />
-        <Route path="/sign-in" element={<SignIn />} />
-        <Route path="/sign-up" element={<SignUp />} />
-        <Route path="/search" element={<Search />} />
-        <Route element={<PrivateRoute />}>
-          <Route path="/dashboard" element={<Dashboard />} />
-        </Route>
-        <Route element={<OnlyAdminPrivateRoute />}>
-          <Route path="/create-post" element={<CreatePost />} />
-          <Route path="/update-post/:postId" element={<UpdatePost />} />
-        </Route>
-        <Route path="/projects" element={<Projects />} />
-        <Route path="/post/:postSlug" element={<PostPage />} />
-        {/* Catch-all route for 404 */}
-        <Route path="*" element={<NotFound />} />
-      </Routes>
-      <Footer />
-    </BrowserRouter>
+    <WithLoading>
+      <BrowserRouter>
+        <ScrollToTop />
+        <Header />
+        <Routes>
+          <Route path="/" element={<Home />} />
+          <Route path="/about" element={<About />} />
+          <Route path="/sign-in" element={<SignIn />} />
+          <Route path="/sign-up" element={<SignUp />} />
+          <Route path="/search" element={<Search />} />
+          <Route element={<PrivateRoute />}>
+            <Route path="/dashboard" element={<Dashboard />} />
+          </Route>
+          <Route element={<OnlyAdminPrivateRoute />}>
+            <Route path="/create-post" element={<CreatePost />} />
+            <Route path="/update-post/:postId" element={<UpdatePost />} />
+          </Route>
+          <Route path="/projects" element={<Projects />} />
+          <Route path="/post/:postSlug" element={<PostPage />} />
+          {/* Catch-all route for 404 */}
+          <Route path="*" element={<NotFound />} />
+        </Routes>
+        <Footer />
+      </BrowserRouter>
+    </WithLoading>
   );
 };
 

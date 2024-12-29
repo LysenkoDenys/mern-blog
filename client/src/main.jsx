@@ -6,25 +6,16 @@ import { store, persistor } from './redux/store.js';
 import { Provider } from 'react-redux';
 import { PersistGate } from 'redux-persist/integration/react';
 import ThemeProvider from './components/ThemeProvider.jsx';
-import { Spinner } from 'flowbite-react';
 
-const AppLoader = () => (
-  <div className="flex flex-col justify-center items-center min-h-screen">
-    <Spinner size="xl" aria-label="Loading app..." />
-    <p className="mt-3 text-lg font-semibold text-gray-700">
-      Loading... please, wait...
-    </p>
-  </div>
-);
+// remove fallback after React initialization:
+document.getElementById('fallback-loader')?.remove();
 
 createRoot(document.getElementById('root')).render(
   <StrictMode>
     <Provider store={store}>
-      <PersistGate persistor={persistor} loading={<AppLoader />}>
+      <PersistGate persistor={persistor}>
         <ThemeProvider>
-          <Suspense fallback={<AppLoader />}>
-            <App />
-          </Suspense>
+          <App />
         </ThemeProvider>
       </PersistGate>
     </Provider>

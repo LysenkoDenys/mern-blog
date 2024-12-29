@@ -12,8 +12,61 @@
     <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png" />
     <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png" />
     <link rel="manifest" href="/site.webmanifest" />
+
+    <!-- styles for the fallback -->
+    <style>
+      #fallback-loader {
+        display: flex;
+        flex-direction: column;
+        justify-content: space-around;
+        align-items: center;
+        height: 100vh;
+        background-color: #f7f7f7;
+      }
+
+      #fallback-message {
+        text-align: center;
+        margin: 10px;
+      }
+
+      #fallback-image {
+        display: flex;
+        justify-content: center;
+      }
+
+      .fallback-logo {
+        width: 100px;
+        height: 100px;
+        animation: spin 2s linear infinite;
+      }
+
+      h1 {
+        text-align: center;
+      }
+
+      @keyframes spin {
+        from {
+          transform: rotate(0deg);
+        }
+        to {
+          transform: rotate(360deg);
+        }
+      }
+    </style>
   </head>
   <body>
+    <div id="fallback-loader">
+      <h1>Welcome to the Denys Lysenko`s Blog</h1>
+      <p id="fallback-message">
+        Performance may be slower as we are on a free plan. Thank you for your
+        patience!
+      </p>
+      <div id="fallback-image">
+        <img class="fallback-logo" src="./favicon-32x32.png" alt="Loading..." />
+      </div>
+      <div id="fallback-message">loading... Please wait...</div>
+    </div>
+
     <div id="root"></div>
     <script type="module" src="/src/main.jsx" defer></script>
     <noscript>You need to enable JavaScript to run this app.</noscript>

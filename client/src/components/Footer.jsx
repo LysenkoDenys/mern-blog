@@ -60,8 +60,8 @@ const FooterCom = () => {
             <div>
               <Footer.Title title="Legal" />
               <Footer.LinkGroup col>
-                <Footer.Link href="#">Privacy Policy</Footer.Link>
-                <Footer.Link href="#">Terms &amp; Conditions</Footer.Link>
+                <Link to="/privacy-policy">Privacy Policy</Link>
+                <Link to="/terms-conditions"> Terms &amp; Conditions</Link>
               </Footer.LinkGroup>
             </div>
           </div>

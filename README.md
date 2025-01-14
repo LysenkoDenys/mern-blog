@@ -47,7 +47,7 @@ https://#
 <li>⭐https://www.npmjs.com/package/moment</li>
 </ul>
 
-<p>Built with Tailwind CSS (responsive designed), and suitable for most popular devices.</p>
+<p>Built with Tailwind CSS (adaptive designed), and suitable for most popular devices.</p>
 
 <p>To run the project on your PC you must have installed Node.js also you should write in the VSC terminal following:</p>
 <li>npm install</li>

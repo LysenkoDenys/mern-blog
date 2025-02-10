@@ -46,3 +46,14 @@ body {
 .dark .post-content a {
   color: rgb(176, 179, 238);
 }
+
+.post-content img,
+.dark .post-content img {
+  cursor: pointer;
+  transition: transform 0.3s ease-in-out;
+}
+
+.post-content img:hover,
+.dark .post-content img:hover {
+  transform: scale(1.02);
+}

@@ -1,6 +1,6 @@
 import { Footer } from 'flowbite-react';
 import { Link } from 'react-router-dom';
-import { BsFacebook, BsGithub, BsLinkedin, BsDribbble } from 'react-icons/bs';
+import { BsFacebook, BsGithub, BsLinkedin, BsYoutube } from 'react-icons/bs';
 
 const FooterCom = () => {
   return (
@@ -96,9 +96,9 @@ const FooterCom = () => {
               rel="noopener noreferrer"
             />
             <Footer.Icon
-              href="https://dribbble.com/Denys_Lysenko"
-              icon={BsDribbble}
-              aria-label="Author`s dribble page"
+              href="https://www.youtube.com/@denyslysenko9617"
+              icon={BsYoutube}
+              aria-label="Author`s youtube channel"
               target="_blank"
               rel="noopener noreferrer"
             />

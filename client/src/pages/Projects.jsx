@@ -25,7 +25,7 @@ const Projects = () => {
               ))}
             </div>
             <Link
-              to={'/search'}
+              to={'https://github.com/LysenkoDenys'}
               className="text-lg text-teal-500 hover:underline text-center"
             >
               View all projects

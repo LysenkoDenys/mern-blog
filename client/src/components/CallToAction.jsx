@@ -17,7 +17,7 @@ const CallToAction = () => {
             gradientDuoTone="purpleToPink"
             className="rounded-tl-xl rounded-bl-none rounded-tr-none"
           >
-            on facebook
+            on Facebook
           </Button>
         </a>
         <a

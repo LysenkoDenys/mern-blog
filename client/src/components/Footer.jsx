@@ -46,14 +46,14 @@ const FooterCom = () => {
                   target="_blank"
                   rel="noopener noreferrer"
                 >
-                  gitHub
+                  GitHub
                 </Footer.Link>
                 <Footer.Link
                   href="https://www.facebook.com/profile.php?id=100001281440746"
                   target="_blank"
                   rel="noopener noreferrer"
                 >
-                  facebook
+                  Facebook
                 </Footer.Link>
               </Footer.LinkGroup>
             </div>
@@ -84,7 +84,7 @@ const FooterCom = () => {
             <Footer.Icon
               href="https://github.com/LysenkoDenys"
               icon={BsGithub}
-              aria-label="Author`s gitHub page"
+              aria-label="Author`s GitHub page"
               target="_blank"
               rel="noopener noreferrer"
             />

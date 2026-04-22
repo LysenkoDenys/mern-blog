@@ -92,8 +92,10 @@ const UpdatePost = () => {
 
     const storage = getStorage(app); // Get Firebase storage instance
     const fileName = `${new Date().getTime()}-${file.name}`; // Create a unique filename
-    const storageRef = ref(storage, fileName); // Create a reference to the storage path
-    const uploadTask = uploadBytesResumable(storageRef, file); // Start the upload task
+    const storageRef = ref(storage, `images/${fileName}`); // Create a reference to the storage path
+    const uploadTask = uploadBytesResumable(storageRef, file, {
+      contentType: file.type,
+    }); // Start the upload task
 
     uploadTask.on(
       'state_changed',
@@ -119,7 +121,7 @@ const UpdatePost = () => {
           setImageUploadProgress(null); // Clear upload progress once upload completes
           setImageUploadError(null); // Clear any image upload errors after success
         });
-      }
+      },
     );
   };
 
@@ -132,7 +134,7 @@ const UpdatePost = () => {
           method: 'PUT',
           headers: { 'Content-Type': 'application/json' }, // Set headers for JSON content type
           body: JSON.stringify(formData), // Send formData in the body of the request
-        }
+        },
       );
       const data = await res.json();
       if (!res.ok) {

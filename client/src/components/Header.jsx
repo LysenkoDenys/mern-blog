@@ -53,12 +53,20 @@ const Header = () => {
     <Navbar className="border-b-2 sticky top-0 z-50">
       <Link
         to="/"
-        className="self-center whitespace-nowrap text-sm sm:text-xl font-semibold dark:text-white"
+        className="self-center whitespace-nowrap text-sm sm:text-xl font-semibold dark:text-white hidden md:inline"
       >
         <span className="px-2 py-1 bg-gradient-to-r from-indigo-500 via-purple-500 to-pink-500 rounded-lg text-white">
           Denys Lysenko`s
         </span>
         Blog
+      </Link>
+      <Link
+        to="/"
+        className="self-center whitespace-nowrap text-sm sm:text-xl font-semibold dark:text-white md:hidden"
+      >
+        <span className="px-2 py-1 bg-gradient-to-r from-indigo-500 via-purple-500 to-pink-500 rounded-lg text-white">
+          Lysenko`s
+        </span>
       </Link>
       <form onSubmit={handleSubmit}>
         <TextInput
@@ -71,16 +79,19 @@ const Header = () => {
         />
       </form>
       <Button
-        className="w-12 h-10 lg:hidden"
+        className="w-11 h-10 lg:hidden"
         color="gray"
         pill
         aria-label="Search"
+        onClick={() =>
+          navigate(`/search?searchTerm=${encodeURIComponent(searchTerm)}`)
+        }
       >
         <CiSearch />
       </Button>
       <div className="flex gap-2 md:order-2">
         <Button
-          className="w-14 h-10"
+          className="w-11 h-10"
           color="gray"
           pill
           onClick={() => dispatch(toggleTheme())}
